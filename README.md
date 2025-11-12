@@ -141,8 +141,8 @@ npm run start
 
 The project is deployed on **Vercel** for production hosting.
 
- **Live Demo:** [https://foodwagen.vercel.app](https://foodwagen.vercel.app)  
- **GitHub Repository:** [https://github.com/<your-username>/foodwagen](https://github.com/Niyonkuru2/FoodWagen.git)
+ **Live Demo:** [https://food-wagen-jaee.vercel.app/  
+ **GitHub Repository:** [(https://github.com/Niyonkuru2/FoodWagen.git)
 
 ---
 
