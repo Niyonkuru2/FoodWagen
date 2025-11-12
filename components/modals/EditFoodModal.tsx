@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { updateFood } from "@/services/api"; 
 import { Food } from "@/types/food";
 import InputField from "@/components/ui/InputField";
 import toast from "react-hot-toast";
@@ -10,7 +9,7 @@ interface EditFoodModalProps {
   isOpen: boolean;
   onClose: () => void;
   food: Food; // The selected food to edit
-  onUpdated: () => void;
+  onUpdated: (formData: Partial<Food>) => void; // Pass updated data to parent
 }
 
 export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: EditFoodModalProps) {
@@ -34,15 +33,14 @@ export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: Edit
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    setLoading(true);
     try {
-      setLoading(true);
-      await updateFood(form.id, form);
+      onUpdated(form); // ✅ pass form data to parent for API call
       toast.success("Food updated successfully");
-      onUpdated(); 
       onClose();
     } catch (err) {
       console.error(err);
