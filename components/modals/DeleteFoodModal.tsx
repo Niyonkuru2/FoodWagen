@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { deleteFood } from "@/services/api";
 import toast from "react-hot-toast";
 
@@ -11,19 +12,33 @@ interface DeleteFoodModalProps {
   onDeleted: () => void;
 }
 
-export default function DeleteFoodModal({ isOpen, onClose, foodId, onDeleted }: DeleteFoodModalProps) {
+export default function DeleteFoodModal({
+  isOpen,
+  onClose,
+  foodId,
+  onDeleted,
+}: DeleteFoodModalProps) {
   const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   if (!isOpen) return null;
 
   const handleDelete = async () => {
     try {
       setLoading(true);
+
+      // Delete from server
       await deleteFood(foodId);
+
+      // Refresh data cache
+      await queryClient.invalidateQueries({ queryKey: ["foods"] });
+
       toast.success("Food deleted successfully");
-      onDeleted(); // refresh the food list
+      onDeleted();
+
       onClose();
     } catch (err) {
+      console.error(err);
       toast.error("Failed to delete food");
     } finally {
       setLoading(false);
@@ -35,14 +50,16 @@ export default function DeleteFoodModal({ isOpen, onClose, foodId, onDeleted }: 
       <div className="bg-white rounded-2xl shadow-lg w-[90%] max-w-sm p-6 text-center">
         <h2 className="text-2xl font-bold text-orange-500 mb-3">Delete Meal</h2>
         <p className="text-gray-600 mb-6">
-          Are you sure you want to delete this meal? <br /> Actions cannot be reversed.
+          Are you sure you want to delete this meal? <br /> This action cannot be undone.
         </p>
 
         <div className="flex justify-center gap-3">
           <button
             onClick={handleDelete}
             disabled={loading}
-            className={`bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-lg transition w-36 cursor-pointer ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
+            className={`bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-lg transition w-36 cursor-pointer ${
+              loading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
           >
             {loading ? "Deleting..." : "Yes"}
           </button>
