@@ -1,7 +1,10 @@
 import Image from "next/image";
 import SearchBar from "./SearchBar";
+interface HeroSectionProps {
+  onSearch: (query: string) => void;
+}
 
-export default function HeroSection() {
+export default function HeroSection({ onSearch }: HeroSectionProps) {
   return (
     <section
       className="w-full bg-yellow-400  py-16 px-6 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden"
@@ -15,7 +18,7 @@ export default function HeroSection() {
         <p className="text-yellow-100 mb-6 text-lg">
           Within a few clicks, find meals that are accessible near you
         </p>
-        <SearchBar />
+        <SearchBar onSearch={onSearch} />
       </div>
 
       {/* Right side */}
