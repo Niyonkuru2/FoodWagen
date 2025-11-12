@@ -103,6 +103,7 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
       {/* Edit Modal */}
       {selectedFood && (
         <EditFoodModal
+        loading={updateMutation.isPending}
        isOpen={isEditOpen}
        onClose={() => setIsEditOpen(false)}
       food={selectedFood}

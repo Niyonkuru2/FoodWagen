@@ -8,13 +8,19 @@ import toast from "react-hot-toast";
 interface EditFoodModalProps {
   isOpen: boolean;
   onClose: () => void;
-  food: Food; // The selected food to edit
-  onUpdated: (formData: Partial<Food>) => void; 
+  food: Food;
+  loading?: boolean;
+  onUpdated: (formData: Partial<Food>) => void;
 }
 
-export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: EditFoodModalProps) {
+export default function EditFoodModal({
+  isOpen,
+  onClose,
+  food,
+  loading = false,
+  onUpdated,
+}: EditFoodModalProps) {
   const [form, setForm] = useState<Food>(food);
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   if (!isOpen) return null;
@@ -36,18 +42,7 @@ export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: Edit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-
-    setLoading(true);
-    try {
-      onUpdated(form);
-      toast.success("Food updated successfully");
-      onClose();
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to update food");
-    } finally {
-      setLoading(false);
-    }
+    onUpdated(form);
   };
 
   return (
@@ -56,10 +51,10 @@ export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: Edit
         <h2 className="text-2xl font-bold text-orange-500 mb-4 text-center">Edit Meal</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-gray-700 text-sm">
-          <InputField id="food_name" name="food_name"  value={form.food_name} onChange={handleChange} error={errors.food_name} />
-          <InputField id="food_rating" name="food_rating" type="number"  value={form.food_rating} onChange={handleChange} error={errors.food_rating} />
+          <InputField id="food_name" name="food_name" value={form.food_name} onChange={handleChange} error={errors.food_name} />
+          <InputField id="food_rating" name="food_rating" type="number" value={form.food_rating} onChange={handleChange} error={errors.food_rating} />
           <InputField id="food_image" name="food_image" value={form.food_image} onChange={handleChange} error={errors.food_image} />
-          <InputField id="price" name="price"  placeholder="Price" value={form.price} onChange={handleChange} error={errors.price} />
+          <InputField id="price" name="price" placeholder="Price" value={form.price} onChange={handleChange} error={errors.price} />
           <InputField id="restaurant_name" name="restaurant_name" value={form.restaurant_name} onChange={handleChange} error={errors.restaurant_name} />
           <InputField id="restaurant_logo" name="restaurant_logo" value={form.restaurant_logo} onChange={handleChange} error={errors.restaurant_logo} />
 
@@ -88,7 +83,9 @@ export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: Edit
             <button
               type="submit"
               disabled={loading}
-              className={`bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg transition w-36 cursor-pointer ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
+              className={`bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg transition w-36 ${
+                loading ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
+              }`}
             >
               {loading ? "Saving..." : "Save"}
             </button>
