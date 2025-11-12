@@ -23,7 +23,7 @@ export function useFoodForm(onSuccess: () => void) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ✅ Pass form as Partial<Food> to validation
+    // Pass form as Partial<Food> to validation
     const validationErrors = validateFoodForm(form);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
