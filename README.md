@@ -1,4 +1,4 @@
-# 🍔 **FoodWagen – A2SV Technical Interview Project**
+#  **FoodWagen – A2SV Technical Interview Project**
 
 **FoodWagen** is a responsive and accessible food management web application built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**.  
 It allows users to view, search, add, edit, and delete food items while maintaining clean UI consistency and robust state management.  
@@ -7,7 +7,7 @@ This project was developed as part of the **A2SV Technical Interview Assessment*
 
 ---
 
-## 📘 **Project Overview**
+##  **Project Overview**
 
 FoodWagen demonstrates core frontend engineering principles, including:  
 - Translating design specifications into high-quality, reusable UI components.  
@@ -19,19 +19,19 @@ The project integrates with a **mock REST API** and includes unit tests covering
 
 ---
 
-## 🧩 **Key Features**
+##  **Key Features**
 
-✅ **Food Listing:** Displays a list of all available food items with detailed restaurant information.  
-✅ **Search Functionality:** Filters foods dynamically based on user input.  
-✅ **Add / Edit / Delete:** Fully functional CRUD operations with validation and visual feedback.  
-✅ **Form Validation:** Includes clear, accessible error messages and input guidance.  
-✅ **Responsive Design:** Seamless experience across mobile, tablet, and desktop screens.  
-✅ **Smooth Animations:** Subtle slide-up entry and hover effects that enhance user experience.  
-✅ **Loading States:** Visual indicators and disabled interactions during API calls.  
+ **Food Listing:** Displays a list of all available food items with detailed restaurant information.  
+ **Search Functionality:** Filters foods dynamically based on user input.  
+ **Add / Edit / Delete:** Fully functional CRUD operations with validation and visual feedback.  
+ **Form Validation:** Includes clear, accessible error messages and input guidance.  
+ **Responsive Design:** Seamless experience across mobile, tablet, and desktop screens.  
+ **Smooth Animations:** Subtle slide-up entry and hover effects that enhance user experience.  
+ **Loading States:** Visual indicators and disabled interactions during API calls.  
 
 ---
 
-## 🛠️ **Tech Stack**
+##  **Tech Stack**
 
 | Technology | Purpose |
 |-------------|----------|
@@ -45,7 +45,7 @@ The project integrates with a **mock REST API** and includes unit tests covering
 
 ---
 
-## 🌐 **API Integration**
+##  **API Integration**
 
 The project consumes the mock API below to manage food and restaurant data:
 
@@ -62,7 +62,7 @@ Base URL: https://6852821e0594059b23cdd834.mockapi.io/Food
 
 ---
 
-## ⚙️ **Core Components**
+##  **Core Components**
 
 | Component | Responsibility |
 |------------|----------------|
@@ -76,7 +76,7 @@ Base URL: https://6852821e0594059b23cdd834.mockapi.io/Food
 
 ---
 
-## 🧾 **Form Validation & Error Handling**
+##  **Form Validation & Error Handling**
 
 Each form field is validated based on the provided guidelines.  
 Error messages are user-friendly and accessible via ARIA attributes.
@@ -92,7 +92,7 @@ Error messages are user-friendly and accessible via ARIA attributes.
 
 ---
 
-## 🧪 **Testing**
+##  **Testing**
 
 Testing ensures stability, correctness, and reliability of critical features.  
 
@@ -110,7 +110,7 @@ All network calls are **mocked** using Jest and React Testing Library.
 
 ---
 
-## 💻 **Local Development**
+## **Local Development**
 
 ### Prerequisites
 - Node.js ≥ 18  
@@ -137,7 +137,7 @@ npm run start
 
 ---
 
-## 🚀 **Deployment**
+##  **Deployment**
 
 The project is deployed on **Vercel** for production hosting.
 
@@ -146,7 +146,7 @@ The project is deployed on **Vercel** for production hosting.
 
 ---
 
-## 📁 **Project Structure**
+##  **Project Structure**
 
 ```
 ├── app/                # App router (Next.js 14)
@@ -160,7 +160,7 @@ The project is deployed on **Vercel** for production hosting.
 
 ---
 
-## ✨ **Highlights**
+##  **Highlights**
 
 - Fully compliant with **A2SV Candidate Submission Guidelines**  
 - Consistent **food-** prefix naming for CSS classes and test IDs  
@@ -170,17 +170,16 @@ The project is deployed on **Vercel** for production hosting.
 
 ---
 
-## 👨‍💻 **Author**
+##  **Author**
 
 **NIYONKURU Samuel**  
 Frontend Developer | A2SV Candidate  
-📍 Kigali, Rwanda  
-📧 **niyonkurusamuel.dev@gmail.com**  
-🔗 [GitHub Profile](https://github.com/<your-username>)  
-🔗 [Portfolio](https://your-portfolio-link.com)  
+ Kigali, Rwanda  
+ **sniyo55@gmail.com**  
+ [GitHub Profile](https://github.com/niyonkuru2)   
 
 ---
 
-## 📜 **License**
+##  **License**
 
 This project is open source and available under the [MIT License](LICENSE).
