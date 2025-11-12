@@ -36,26 +36,32 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
   });
 
   const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
+
   const handleEdit = (food: Food) => {
     setSelectedFood(food);
     setIsEditOpen(true);
   };
+
   const handleDelete = (id: string) => {
     setSelectedFoodId(id);
     setIsDeleteOpen(true);
   };
 
-  // Normalize foods data attributes
-  const normalizedFoods = foods.map((food, i) => ({
+  // ✅ Normalize and enforce id presence
+  const normalizedFoods: Food[] = foods.map((food, i) => ({
     ...food,
-    id: food.id,
+    id: food.id ?? `temp-${i}`, // ensure id always exists as string
     food_name: food.food_name || food.name || `Meal ${i + 1}`,
     food_rating: food.food_rating || food.rating || "N/A",
-    food_image: food.food_image || food.image || "https://via.placeholder.com/300x200",
-    restaurant_name:  food.restaurant_name || food.restaurantName || "Unknown Restaurant",
+    food_image:
+      food.food_image ||
+      food.image ||
+      "https://via.placeholder.com/300x200",
+    restaurant_name:
+      food.restaurant_name || food.restaurantName || "Unknown Restaurant",
     restaurant_logo: food.restaurant_logo || "https://via.placeholder.com/40",
     restaurant_status: food.restaurant_status || "Closed",
-    price:food.price || (Math.floor(Math.random() * 20) + 5).toFixed(2),
+    price: food.price || (Math.floor(Math.random() * 20) + 5).toFixed(2),
   }));
 
   const visibleFoods = normalizedFoods.slice(0, visibleCount);
@@ -101,6 +107,7 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
           onClose={() => setIsEditOpen(false)}
           food={selectedFood}
           onUpdated={(formData) =>
+            selectedFood?.id &&
             updateMutation.mutate({ id: selectedFood.id, form: formData })
           }
         />
