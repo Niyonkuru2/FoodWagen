@@ -24,7 +24,7 @@ export function useFoodForm(onSuccess: () => void) {
     e.preventDefault();
 
     // Pass form as Partial<Food> to validation
-    const validationErrors = validateFoodForm(form);
+    const validationErrors = validateFoodForm(form as any);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
 
