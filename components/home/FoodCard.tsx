@@ -2,19 +2,7 @@
 
 import { useState } from "react";
 import { MoreVertical, Star, Tags } from "lucide-react";
-
-interface Food {
-  id?: string;
-  food_name: string;
-  food_rating: string | number;
-  food_image: string;
-  restaurant_name: string;
-  restaurant_logo: string;
-  restaurant_status: string;
-  price?: string | number;
-  open?: boolean;
-  [key: string]: any;
-}
+import { Food } from "@/types/food";
 
 interface FoodCardProps {
   food: Food;
@@ -25,22 +13,12 @@ interface FoodCardProps {
 export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const image =
-    food.food_image ||
-    food.image ||
-    food.avatar ||
-    "https://via.placeholder.com/300x200";
+  const image = food.food_image || "https://via.placeholder.com/300x200";
   const price = food.price || "0.00";
   const rating = food.food_rating || "N/A";
   const restaurantName = food.restaurant_name || "Unknown Restaurant";
-  const restaurantLogo =
-    food.restaurant_logo || "https://via.placeholder.com/40";
-  const status =
-    food.open !== undefined
-      ? food.open
-        ? "Open"
-        : "Closed"
-      : food.restaurant_status || "Closed";
+  const restaurantLogo = food.restaurant_logo || "https://via.placeholder.com/40";
+  const status = food.open ? "Open" : food.restaurant_status || "Closed";
   const isOpen = status.toLowerCase().includes("open");
 
   return (
@@ -91,13 +69,13 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
                   onClick={() => onEdit?.(food)}
                   className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                   Edit
+                  Edit
                 </button>
                 <button
-                  onClick={() => onDelete?.(food.id!)}
+                  onClick={() => onDelete?.(food.id)}
                   className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-gray-100"
                 >
-                   Delete
+                  Delete
                 </button>
               </div>
             )}
@@ -106,7 +84,7 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
 
         {/* Food Name */}
         <h3 className="text-base font-semibold text-gray-800 leading-tight mb-1">
-          {food.food_name || "Unnamed Food"}
+          {food.food_name}
         </h3>
 
         {/* Rating */}
