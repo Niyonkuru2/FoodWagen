@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
             <button
               type="submit"
-              className="bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-semibold px-4 py-2 rounded-r-md hover:opacity-90 transition"
+              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-r-md hover:opacity-90 transition"
             >
               Subscribe
             </button>

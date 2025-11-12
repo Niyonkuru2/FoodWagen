@@ -96,7 +96,7 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
         {/* Status */}
         <span
           className={`text-xs font-semibold px-3 py-1 rounded-full ${
-            isOpen ? "bg-green-100 text-green-700" : "bg-red-50 text-red-500"
+            isOpen ? "bg-gray-300 text-green-700" : "bg-red-50 text-red-500"
           }`}
         >
           {status}

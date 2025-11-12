@@ -15,9 +15,9 @@ export default function Home() {
   });
 
   if (isLoading)
-    return <div className="text-center py-10 text-gray-500">Loading meals...</div>;
+    return <div className="flex items-center justify-center h-screen text-gray-500">Loading meals...</div>;
   if (isError)
-    return <div className="text-center py-10 text-red-500">Failed to load meals.</div>;
+    return <div className="flex items-center justify-center h-screen text-red-500">Failed to load meals.</div>;
 
   return (
     <main className="min-h-screen bg-gray-50">

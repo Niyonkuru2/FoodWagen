@@ -47,10 +47,10 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
     setIsDeleteOpen(true);
   };
 
-  // ✅ Normalize and enforce id presence
+  // Normalize
   const normalizedFoods: Food[] = foods.map((food, i) => ({
     ...food,
-    id: food.id ?? `temp-${i}`, // ensure id always exists as string
+    id: food.id ?? `temp-${i}`, 
     food_name: food.food_name || food.name || `Meal ${i + 1}`,
     food_rating: food.food_rating || food.rating || "N/A",
     food_image:

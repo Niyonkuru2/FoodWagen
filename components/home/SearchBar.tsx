@@ -59,7 +59,7 @@ export default function SearchBar() {
 
           <button
             type="submit"
-             className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-6 py-2.5 rounded-lg flex items-center justify-center gap-2 whitespace-nowrap transition"
+             className="bg-orange-600 text-white font-semibold text-sm px-6 py-2.5 rounded-lg flex items-center justify-center gap-2 whitespace-nowrap transition"
           >
             <Search size={16} /> Find Meal
           </button>

@@ -9,7 +9,7 @@ interface EditFoodModalProps {
   isOpen: boolean;
   onClose: () => void;
   food: Food; // The selected food to edit
-  onUpdated: (formData: Partial<Food>) => void; // Pass updated data to parent
+  onUpdated: (formData: Partial<Food>) => void; 
 }
 
 export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: EditFoodModalProps) {
@@ -39,7 +39,7 @@ export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: Edit
 
     setLoading(true);
     try {
-      onUpdated(form); // ✅ pass form data to parent for API call
+      onUpdated(form);
       toast.success("Food updated successfully");
       onClose();
     } catch (err) {
@@ -56,11 +56,12 @@ export default function EditFoodModal({ isOpen, onClose, food, onUpdated }: Edit
         <h2 className="text-2xl font-bold text-orange-500 mb-4 text-center">Edit Meal</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-gray-700 text-sm">
-          <InputField id="food_name" name="food_name" label="Food name" value={form.food_name} onChange={handleChange} error={errors.food_name} />
-          <InputField id="food_rating" name="food_rating" type="number" label="Food rating" value={form.food_rating} onChange={handleChange} error={errors.food_rating} />
-          <InputField id="food_image" name="food_image" label="Food image (link)" value={form.food_image} onChange={handleChange} error={errors.food_image} />
-          <InputField id="restaurant_name" name="restaurant_name" label="Restaurant name" value={form.restaurant_name} onChange={handleChange} error={errors.restaurant_name} />
-          <InputField id="restaurant_logo" name="restaurant_logo" label="Restaurant logo (link)" value={form.restaurant_logo} onChange={handleChange} error={errors.restaurant_logo} />
+          <InputField id="food_name" name="food_name"  value={form.food_name} onChange={handleChange} error={errors.food_name} />
+          <InputField id="food_rating" name="food_rating" type="number"  value={form.food_rating} onChange={handleChange} error={errors.food_rating} />
+          <InputField id="food_image" name="food_image" value={form.food_image} onChange={handleChange} error={errors.food_image} />
+          <InputField id="price" name="price"  placeholder="Price" value={form.price} onChange={handleChange} error={errors.price} />
+          <InputField id="restaurant_name" name="restaurant_name" value={form.restaurant_name} onChange={handleChange} error={errors.restaurant_name} />
+          <InputField id="restaurant_logo" name="restaurant_logo" value={form.restaurant_logo} onChange={handleChange} error={errors.restaurant_logo} />
 
           {/* Restaurant Status */}
           <div>

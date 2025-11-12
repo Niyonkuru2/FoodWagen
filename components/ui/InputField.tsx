@@ -3,7 +3,6 @@ import React from "react";
 interface InputFieldProps {
   id: string;
   name: string;
-  label: string;
   type?: string;
   value: string;
   placeholder?: string;
@@ -14,7 +13,6 @@ interface InputFieldProps {
 export default function InputField({
   id,
   name,
-  label,
   type = "text",
   value,
   placeholder,
@@ -23,9 +21,6 @@ export default function InputField({
 }: InputFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold mb-1">
-        {label}
-      </label>
       <input
         id={id}
         name={name}
