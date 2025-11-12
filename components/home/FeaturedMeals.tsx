@@ -91,7 +91,7 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
             <div className="flex justify-center mt-10">
               <button
                 onClick={handleLoadMore}
-                className="flex items-center gap-2 bg-orange-500 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-orange-600 transition"
+                className="flex items-center gap-2 bg-orange-500 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-orange-600 transition cursor-pointer"
               >
                 Load More <ChevronRight size={18} />
               </button>
