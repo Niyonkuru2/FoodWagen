@@ -103,14 +103,15 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
       {/* Edit Modal */}
       {selectedFood && (
         <EditFoodModal
-          isOpen={isEditOpen}
-          onClose={() => setIsEditOpen(false)}
-          food={selectedFood}
-          onUpdated={(formData) =>
-            selectedFood?.id &&
-            updateMutation.mutate({ id: selectedFood.id, form: formData })
-          }
-        />
+       isOpen={isEditOpen}
+       onClose={() => setIsEditOpen(false)}
+      food={selectedFood}
+     onUpdated={(formData: Partial<Food>) =>
+    selectedFood?.id &&
+    updateMutation.mutate({ id: selectedFood.id, form: formData })
+  }
+/>
+
       )}
 
       {/* Delete Modal */}
