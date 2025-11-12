@@ -1,4 +1,5 @@
 export interface Food {
+  id: string;
   food_name: string;
   food_rating: string;
   food_image: string;
