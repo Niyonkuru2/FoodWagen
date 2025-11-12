@@ -22,7 +22,7 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
   const status = food.open ? "Open" : food.restaurant_status || "Closed";
   const isOpen = status.toLowerCase().includes("open");
 
-  // ✅ Close dropdown when clicking outside
+  //Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
