@@ -118,7 +118,7 @@ All network calls are **mocked** using Jest and React Testing Library.
 
 ### Installation
 ```bash
-git clone https://github.com/<your-username>/foodwagen.git
+git clone https://github.com/Niyonkuru2/FoodWagen.git
 cd foodwagen
 npm install
 ```
@@ -132,7 +132,7 @@ Then open [http://localhost:3000](http://localhost:3000).
 ### Build for Production
 ```bash
 npm run build
-npm run start
+npm run dev
 ```
 
 ---
@@ -141,8 +141,8 @@ npm run start
 
 The project is deployed on **Vercel** for production hosting.
 
- **Live Demo:** [https://food-wagen-jaee.vercel.app/  
- **GitHub Repository:** [(https://github.com/Niyonkuru2/FoodWagen.git)
+ **Live Demo:** [https://food-wagen-jaee.vercel.app/](https://food-wagen-jaee.vercel.app/)  
+ **GitHub Repository:** [https://github.com/Niyonkuru2/foodwagen](https://github.com/Niyonkuru2/FoodWagen.git)
 
 ---
 
