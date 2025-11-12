@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 export function useFoodForm(onSuccess: () => void) {
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState<Food>({
+  const [form, setForm] = useState<Partial<Food>>({
     food_name: "",
     food_rating: "",
     food_image: "",
