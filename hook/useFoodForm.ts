@@ -1,10 +1,15 @@
+"use client";
+
 import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Food } from "@/types/food";
 import { validateFoodForm } from "@/lib/validation";
 import { addFood } from "@/services/api";
 import toast from "react-hot-toast";
 
 export function useFoodForm(onSuccess: () => void) {
+  const queryClient = useQueryClient();
+
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<Partial<Food>>({
     food_name: "",
@@ -16,14 +21,16 @@ export function useFoodForm(onSuccess: () => void) {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Handle form input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Pass form as Partial<Food> to validation
+    // Validate form
     const validationErrors = validateFoodForm(form as any);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
@@ -31,7 +38,7 @@ export function useFoodForm(onSuccess: () => void) {
     try {
       setLoading(true);
 
-      //  Provide defaults for required fields when sending to addFood
+      // Add new food with defaults
       await addFood({
         id: form.id ?? "",
         price: form.price ?? "0.00",
@@ -42,6 +49,9 @@ export function useFoodForm(onSuccess: () => void) {
         restaurant_logo: form.restaurant_logo ?? "",
         restaurant_status: form.restaurant_status ?? "Open Now",
       });
+
+      //Instantly refresh food list
+      await queryClient.invalidateQueries({ queryKey: ["foods"] });
 
       // Reset form
       setForm({
