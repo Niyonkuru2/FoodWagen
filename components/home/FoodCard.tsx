@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MoreVertical, Star, Tags } from "lucide-react";
 import { Food } from "@/types/food";
 
@@ -12,6 +12,7 @@ interface FoodCardProps {
 
 export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const image = food.food_image || "https://via.placeholder.com/300x200";
   const price = food.price || "0.00";
@@ -20,6 +21,27 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
   const restaurantLogo = food.restaurant_logo || "https://via.placeholder.com/40";
   const status = food.open ? "Open" : food.restaurant_status || "Closed";
   const isOpen = status.toLowerCase().includes("open");
+
+  // ✅ Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleEdit = () => {
+    setMenuOpen(false); // close dropdown first
+    onEdit?.(food);
+  };
+
+  const handleDelete = () => {
+    setMenuOpen(false); // close dropdown first
+    onDelete?.(food.id);
+  };
 
   return (
     <div className="relative bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group">
@@ -40,7 +62,7 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
 
       {/* Card Content */}
       <div className="p-4">
-        {/* Restaurant Info + Menu */}
+        {/* Restaurant Info + Dropdown Menu */}
         <div className="flex items-center justify-between mb-2 relative">
           <div className="flex items-center gap-2">
             <img
@@ -55,24 +77,24 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
           </div>
 
           {/* Dropdown Menu */}
-          <div className="relative">
+          <div ref={menuRef} className="relative">
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => setMenuOpen((prev) => !prev)}
               className="p-1 hover:bg-gray-100 rounded-md"
             >
               <MoreVertical size={16} className="text-gray-500" />
             </button>
 
             {menuOpen && (
-              <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg w-28 z-10">
+              <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg w-28 z-20 animate-fade-in">
                 <button
-                  onClick={() => onEdit?.(food)}
+                  onClick={handleEdit}
                   className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Edit
                 </button>
                 <button
-                  onClick={() => onDelete?.(food.id)}
+                  onClick={handleDelete}
                   className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-gray-100"
                 >
                   Delete
