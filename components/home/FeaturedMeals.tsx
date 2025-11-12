@@ -73,7 +73,7 @@ export default function FeaturedMeals({ foods }: { foods: Food[] }) {
       </h2>
 
       {normalizedFoods.length === 0 ? (
-        <div className="text-center text-red-500">No Meal available</div>
+        <div className="text-center text-red-500">No Item available</div>
       ) : (
         <>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
