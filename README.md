@@ -141,7 +141,7 @@ npm run dev
 
 The project is deployed on **Vercel** for production hosting.
 
- **Live Demo:** [https://food-wagen-jaee.vercel.app/](https://food-wagen-jaee.vercel.app/)  
+ **Live Demo:** [https://food-wagen-beige.vercel.app/](https://food-wagen-beige.vercel.app)  
  **GitHub Repository:** [https://github.com/Niyonkuru2/foodwagen](https://github.com/Niyonkuru2/FoodWagen.git)
 
 ---
