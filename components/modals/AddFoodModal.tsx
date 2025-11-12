@@ -19,11 +19,11 @@ export default function AddFoodModal({ isOpen, onClose }: AddFoodModalProps) {
         <h2 className="text-2xl font-bold text-orange-500 mb-4 text-center">Add a Meal</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-gray-700 text-sm">
-          <InputField id="food_name" name="food_name" label="Food Name" placeholder="Food Name" value={form.food_name} onChange={handleChange} error={errors.food_name} />
-          <InputField id="food_rating" name="food_rating" type="number" label="Food Rating" placeholder="Food Rating" value={form.food_rating} onChange={handleChange} error={errors.food_rating} />
-          <InputField id="food_image" name="food_image" label="Food Image URL" placeholder="Food Image (link)" value={form.food_image} onChange={handleChange} error={errors.food_image} />
-          <InputField id="restaurant_name" name="restaurant_name" label="Restaurant Name" placeholder="Restaurant Name" value={form.restaurant_name} onChange={handleChange} error={errors.restaurant_name} />
-          <InputField id="restaurant_logo" name="restaurant_logo" label="Restaurant Logo URL" placeholder="Restaurant Logo (link)" value={form.restaurant_logo} onChange={handleChange} error={errors.restaurant_logo} />
+          <InputField id="food_name" name="food_name" label="Food Name" placeholder="Food Name" value={form.food_name ?? ""} onChange={handleChange} error={errors.food_name} />
+          <InputField id="food_rating" name="food_rating" type="number" label="Food Rating" placeholder="Food Rating" value={form.food_rating ?? ""} onChange={handleChange} error={errors.food_rating} />
+          <InputField id="food_image" name="food_image" label="Food Image URL" placeholder="Food Image (link)" value={form.food_image ?? ""} onChange={handleChange} error={errors.food_image} />
+          <InputField id="restaurant_name" name="restaurant_name" label="Restaurant Name" placeholder="Restaurant Name" value={form.restaurant_name ?? ""} onChange={handleChange} error={errors.restaurant_name} />
+          <InputField id="restaurant_logo" name="restaurant_logo" label="Restaurant Logo URL" placeholder="Restaurant Logo (link)" value={form.restaurant_logo ?? ""} onChange={handleChange} error={errors.restaurant_logo} />
 
           {/* Restaurant Status */}
           <div>
